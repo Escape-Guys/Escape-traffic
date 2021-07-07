@@ -37,6 +37,7 @@ flags.DEFINE_float('score', 0.50, 'score threshold')
 flags.DEFINE_boolean('dont_show', False, 'dont show video output')
 flags.DEFINE_boolean('info', False, 'print info on detections')
 flags.DEFINE_boolean('plate', False, 'perform license plate recognition')
+flags.DEFINE_string('street', "university", 'street name')
 
 streets = {
     "university":["city_street",20],
@@ -51,14 +52,15 @@ streets = {
     "almadena": ["city_street",47],
     "alsaada": ["city_street",15]
 }
-while True:
-    street = input("Enter the street name ")
-    if street not in streets.keys():
-        print("this street does not exist in out database, please enter one of these")
+
+# while True:
+#     street = input("Enter the street name ")
+#     if street not in streets.keys():
+#         print("this street does not exist in out database, please enter one of these")
         
-        print('\n'+" ,".join(streets.keys())+'\n')
-    else:
-        break
+#         print('\n'+" ,".join(streets.keys())+'\n')
+#     else:
+#         break
 
 
 sent = 1
@@ -160,7 +162,7 @@ def main(_argv):
 
 
         if True:
-            global sent, street, streets
+            global sent, streets
 
             # count objects found
             counted_classes = count_objects(pred_bbox, by_class = True, allowed_classes=allowed_classes)
@@ -168,10 +170,10 @@ def main(_argv):
             b = {}
             if 'car' in counted_classes.keys():
                 a["car"] = counted_classes['car']
-                b['car'] = '{}%'.format(counted_classes['car']/streets[street][1]*100)
+                b['car'] = '{}%'.format(int(counted_classes['car']/streets[FLAGS.street][1]*100))
             else:
                 a["car"] = 0
-                b['car'] = '0/{}'.format(streets[street][1])
+                b['car'] = '0/{}'.format(streets[FLAGS.street][1])
             if 'person' in counted_classes.keys():
                 a["person"] = counted_classes['person']
                 b["person"] = counted_classes['person']
@@ -185,29 +187,29 @@ def main(_argv):
         else:
             image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, allowed_classes=allowed_classes, read_plate=FLAGS.plate)
         fps = 1.0 / (time.time() - start_time)
-        if streets[street][0] == 'highway':
+        if streets[FLAGS.street][0] == 'highway':
             if a["car"] and a["person"]:
                 if sent <=1 :
                     sent += 1
                     account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "8a88e23d5f1837a898eee9e6ce49d314"
+                    auth_token = "f5995a70eed1b3288a993c88da2987c2"
                     client = Client(account_sid, auth_token)
                     call = client.calls.create(
-                        twiml=f'<Response><Say>There is a possibility of an accident at {street} street, please check the surveillance Cameras</Say></Response>',
+                        twiml=f'<Response><Say>There is a possibility of an accident at {FLAGS.street} street, please check the surveillance Cameras</Say></Response>',
                         to= "+962780146788",
                         from_= "+15055602894"
                     )
                     print(call.sid)
                     
         else:
-            if a["car"] >= int(streets[street][1]):
+            if a["car"] >= int(streets[FLAGS.street][1]):
                 if sent <=1 :
                     sent += 1
                     account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "8a88e23d5f1837a898eee9e6ce49d314"
+                    auth_token = "f5995a70eed1b3288a993c88da2987c2"
                     client = Client(account_sid, auth_token)
                     call = client.calls.create(
-                        twiml=f'<Response><Say>you have {a["car"]} cars in {street} street</Say></Response>',
+                        twiml=f'<Response><Say>you have {a["car"]} cars in {FLAGS.street} street</Say></Response>',
                         to= "+962780146788",
                         from_= "+15055602894"
                     )
