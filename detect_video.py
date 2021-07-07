@@ -46,7 +46,7 @@ streets = {
     "jordan": ["highway",40],
     "yarmouk": ["highway",70],
     "autostrad": ["highway",45],
-    "mecca": ["city_street",50],
+    "mecca": ["city_street",5],
     "gardens": ["city_street",30],
     "abu-nusair": ["city_street",30],
     "almadena": ["city_street",47],
