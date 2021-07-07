@@ -48,13 +48,14 @@ new_button.place(x=380,y=75)
 def video_detect():
     filename = filedialog.askopenfilename(
         initialdir="/", title="Select file")
-    print(selection)
-    os.system('cmd /c "python detect_video.py --street {} --video {}"'.format(selection,filename))
+    if filename:
+        os.system('cmd /c "python detect_video.py --street {} --video {}"'.format(selection,filename))
 
 def image_detect():
     filename = filedialog.askopenfilename(
         initialdir="/", title="Select file")
-    os.system('cmd /c "python detect.py --images {}"'.format(filename))
+    if filename:
+        os.system('cmd /c "python detect.py --images {}"'.format(filename))
 
 def webcam_detect():
     os.system('cmd /c "python detect_video.py --street {} --video 0"'.format(selection))
@@ -62,21 +63,26 @@ def webcam_detect():
 def image_detect_and_save():
     filename = filedialog.askopenfilename(
         initialdir="/", title="Select Image")
-    save_spot = filedialog.askdirectory(
-        initialdir="/", title="Select where to save")
-    os.system('cmd /c "python detect.py --images {} --output {}/"'.format(filename,save_spot))
+    if filename:
+        save_spot = filedialog.askdirectory(
+            initialdir="/", title="Select where to save")
+        if save_spot:
+            os.system('cmd /c "python detect.py --images {} --output {}/"'.format(filename,save_spot))
 
 def video_detect_and_save():
     filename = filedialog.askopenfilename(
         initialdir="/", title="Select Video")
-    save_spot = filedialog.askdirectory(
-        initialdir="/", title="Select where to save")
-    os.system('cmd /c "python detect_video.py --street {} --video {} --output {}/a.avi"'.format(selection,filename,save_spot))
+    if filename:
+        save_spot = filedialog.askdirectory(
+            initialdir="/", title="Select where to save")
+        if save_spot:
+            os.system('cmd /c "python detect_video.py --street {} --video {} --output {}/a.avi"'.format(selection,filename,save_spot))
 
 def webcam_detect_and_save():
     save_spot = filedialog.askdirectory(
         initialdir="/", title="Select where to save")
-    os.system('cmd /c "python detect_video.py --street {} --video 0 --output {}/saved.avi"'.format(selection,save_spot))
+    if save_spot:
+        os.system('cmd /c "python detect_video.py --street {} --video 0 --output {}/saved.avi"'.format(selection,save_spot))
 
 # for hover effects
 
