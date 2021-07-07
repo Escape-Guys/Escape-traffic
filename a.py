@@ -1,15 +1,18 @@
+# import time
 import tkinter as tk
 import os
 from tkinter import filedialog, ttk
 from tkinter import *
+from tkinter import font
 from PIL import ImageTk
-# from tkinter import ImageTk
 
 root = tk.Tk()
+root.title("Escape Traffic")
+root.iconbitmap('icon.ico')
 streets = ["university","airport","swaileh","jordan","yarmouk","autostrad","mecca","gardens","abu-nusair","almadena","alsaada"]
 
 # background image
-bgc = ImageTk.PhotoImage(file=r"C:\Users\STUDENT\Desktop\Escape-traffic\data\aaa.png")
+bgc = ImageTk.PhotoImage(file='data/aaa.png')
 canvas = Canvas(root, width=600, height=500)
 bg_label = Label(root, image=bgc)
 bg_label.place(x=0,y=0,relheight=1,relwidth=1)
@@ -22,38 +25,40 @@ Font_tuple2 = ("Comic Sans MS", 10, "bold")
 selection = "university"
 
 # dropdown list for streets
-def selected():
+def selected(event):
     global selection
     selection = clicked.get()
-    print(selection)
+
     top = Toplevel()
     ll1 = Label(top, text="Successfully saved")
     ll1.pack()
+    # time.sleep(3)
+    # top.destroy()
 
-l1 = Label(root, text="Select a street", font=("Comic Sans MS", 13, "bold"))
-l1.place(x=110,y=75)
+l1 = Label(root, text="Streets:", font=("Comic Sans MS", 13, "bold"), fg="white", bg="#0A1931")
+l1.place(x=200,y=75)
 
 clicked = StringVar()
 clicked.set(streets[0])
 
-ddl = OptionMenu(root, clicked, *streets)
-ddl.place(x=260,y=75)
+ddl = OptionMenu(root, clicked, *streets,command=selected)
+ddl.place(x=320,y=75)
 
-new_button = Button(root, text="Select", command=selected, font=Font_tuple2,width=5, fg='white', bg="#263D42")
-new_button.place(x=380,y=75)
+# new_button = Button(root, text="Select", command=selected, font=Font_tuple2,width=5, fg='white', bg="#263D42")
+# new_button.place(x=380,y=75)
 
 # end of dropdown list
 
 
 def video_detect():
     filename = filedialog.askopenfilename(
-        initialdir="/", title="Select file")
+        initialdir="/", title="Select file",filetypes=(("video", "*.mp4;*.avi;*.amv;*.flv;*.mkv;*.webm"),("all files", "*.*")))
     if filename:
         os.system('cmd /c "python detect_video.py --street {} --video {}"'.format(selection,filename))
 
 def image_detect():
     filename = filedialog.askopenfilename(
-        initialdir="/", title="Select file")
+        initialdir="/", title="Select file",filetypes=(("Photos", "*.PNG;*JPEG;*.JPG;*.WeBP,*.BMP,*.SVG"),("all files", "*.*")))
     if filename:
         os.system('cmd /c "python detect.py --images {}"'.format(filename))
 
@@ -65,13 +70,13 @@ def image_detect_and_save():
         initialdir="/", title="Select Image")
     if filename:
         save_spot = filedialog.askdirectory(
-            initialdir="/", title="Select where to save")
+            initialdir="/", title="Select where to save",filetypes=(("Photos", "*.PNG;*JPEG;*.JPG;*.WeBP,*.BMP,*.SVG"),("all files", "*.*")))
         if save_spot:
             os.system('cmd /c "python detect.py --images {} --output {}/"'.format(filename,save_spot))
 
 def video_detect_and_save():
     filename = filedialog.askopenfilename(
-        initialdir="/", title="Select Video")
+        initialdir="/", title="Select Video",filetypes=(("video", "*.mp4;*.avi;*.amv;*.flv;*.mkv;*.webm"),("all files", "*.*")))
     if filename:
         save_spot = filedialog.askdirectory(
             initialdir="/", title="Select where to save")
@@ -118,7 +123,7 @@ def on_leave(e):
 # for images detections
 root.geometry('600x475')
 root.resizable(False,False)
-title = tk.Label(root, text = "Escape Traffic", font=Font_tuple, bg ="#fff5de")
+title = tk.Label(root, text = "Escape Traffic", font=Font_tuple, bg="#0A1931", fg="white")
 title.place(x=210,y=0)
 
 
