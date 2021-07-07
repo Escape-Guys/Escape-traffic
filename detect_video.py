@@ -46,7 +46,7 @@ streets = {
     "jordan": ["highway",40],
     "yarmouk": ["highway",70],
     "autostrad": ["highway",45],
-    "mecca": ["city_street",50],
+    "mecca": ["city_street",5],
     "gardens": ["city_street",30],
     "abu-nusair": ["city_street",30],
     "almadena": ["city_street",47],
@@ -192,7 +192,7 @@ def main(_argv):
                 if sent <=1 :
                     sent += 1
                     account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "f5995a70eed1b3288a993c88da2987c2"
+                    auth_token = "bca444acdccf916a6233ce8d12bb8478"
                     client = Client(account_sid, auth_token)
                     call = client.calls.create(
                         twiml=f'<Response><Say>There is a possibility of an accident at {FLAGS.street} street, please check the surveillance Cameras</Say></Response>',
@@ -206,7 +206,7 @@ def main(_argv):
                 if sent <=1 :
                     sent += 1
                     account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "f5995a70eed1b3288a993c88da2987c2"
+                    auth_token = "bca444acdccf916a6233ce8d12bb8478"
                     client = Client(account_sid, auth_token)
                     call = client.calls.create(
                         twiml=f'<Response><Say>you have {a["car"]} cars in {FLAGS.street} street</Say></Response>',
