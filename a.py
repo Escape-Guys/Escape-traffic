@@ -67,10 +67,10 @@ def webcam_detect():
 
 def image_detect_and_save():
     filename = filedialog.askopenfilename(
-        initialdir="/", title="Select Image")
+        initialdir="/", title="Select Image",filetypes=(("Photos", "*.PNG;*JPEG;*.JPG;*.WeBP,*.BMP,*.SVG"),("all files", "*.*")))
     if filename:
         save_spot = filedialog.askdirectory(
-            initialdir="/", title="Select where to save",filetypes=(("Photos", "*.PNG;*JPEG;*.JPG;*.WeBP,*.BMP,*.SVG"),("all files", "*.*")))
+            initialdir="/", title="Select where to save")
         if save_spot:
             os.system('cmd /c "python detect.py --images {} --output {}/"'.format(filename,save_spot))
 
