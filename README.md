@@ -66,7 +66,7 @@ you **must** use this installation if you **don't have nvedia External graphics 
 
 3. after finishing installing Anaconda, Enter the Application, the enterface below is what are you going to see, select CMD.exe Prompt Launcher as in the image:
 
-![image](./resources/1.png)
+![image](./resources/1.PNG)
 
 4. now, we need to create the Environment to hold all the libraries, most of the libraries will be installed automatically, but you need to add some of them by yourself. to create an environment and download dependencies, you need to Enter this command inside the CMD:
 
