@@ -144,7 +144,7 @@ b. Image detection & save: it's the same as Image detection, but it will ask you
 
 c. Video detection: this feature is going to detect multiple objects inside videos frame by frame, and give you the count for people and a ratio for cars, this ratio represents the traffic jam percentage at this street, which is dividing the current count of cars to the maximum number of cars for the street, if this ratio reaches 100%, this means that this street currently has a traffic jam. in the case of video detection, it's not going to do anything because this is an already recorder video. for this feature, you need to specify the street name, this will affect the maximum capacity, and if the street is considered as a city street or a highway. the streets covered in this project are specified in the image below:
 
-![image](./resources/6.PNG)
+![image](./resources/6.png)
 
 after you select the proper street, you need to select the video, after you select it, it will start detecting objects in the video frame by frame, your experience will directly be affected by your device's performance, the image below is just one frame of a video detection
 
