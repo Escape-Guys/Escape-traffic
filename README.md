@@ -2,13 +2,13 @@
 
 **Team members**
 
-* Mohammad Nada
-
-* Abdel Hadi Nofal
+* Abdalrahman Samara
 
 * Qusai Qishta
 
-* Abdalrahman Samara
+* Mohammad Nada
+
+* Abdel Hadi Nofal
 
 ### **Traffic Percentage**
 
@@ -25,28 +25,28 @@ for the project management, we are going to use Trello, to divide all the tasks 
 ### User Stories: 
  
 
-1. Webcam or video ; As a user I want my application to open my cam.
+1. Webcam or video : As a user I want my application to open my cam.
     a.Feature Task:
          I can Choice my cam, or upload the video from my side
     b. Acceptance Test :
             insure can I add the video to test.
-2. Count; As a user I want to count the cars in the street .
+2. Count: As a user I want to count the cars in the street .
     a. Feature Tasks:
         the app count all cars in the screen and give the result
     b. Acceptance Test :
 	    return the all counted cars , as number 
-3. HighAccuracy; As a user I want high accuracy to count cars.
+3. HighAccuracy: As a user I want high accuracy to count cars.
     a. Feature Tasks:
         most the accuracy more than 90% 
     b. Acceptance Test 
         test by image , already known the counts number , 
         test the video that have result a;ready
-4. Get percentage; As A user I want to get the percentage of cars in
+4. Get percentage: As A user I want to get the percentage of cars in
    a. Feature Tasks: 
         a. depends on the street, I want to know how much traffic is ?as result  
     b. Acceptance Test 
         test the known street capacity and 
-5. Text Alarm; As a User I want to send me A text that tell me there A high traffic in
+5. Text Alarm: As a User I want to send me A text that tell me there A high traffic in
    a. Feature Tasks: 
         in case the street have 90% or more then The app will send a text to relative department to inform 
     b. Acceptance Test 
