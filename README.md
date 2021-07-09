@@ -138,7 +138,7 @@ a. Image detection: this feature is going to detect multiple objects inside imag
 
 ![image](./resources/4.PNG)
 
-![image](./resources/5.PNG)
+![image2](./resources/5.png)
 
 b. Image detection & save: it's the same as Image detection, but it will ask you where to save the image after it finish detecting.
 
