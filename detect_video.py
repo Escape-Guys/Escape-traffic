@@ -41,26 +41,17 @@ flags.DEFINE_string('street', "university", 'street name')
 
 streets = {
     "university":["city_street",20],
-    "airport": ["highway",40],
+    "airport": ["highway",60],
     "swaileh": ["city_street",30],
     "jordan": ["highway",40],
-    "yarmouk": ["highway",70],
+    "yarmouk": ["highway",40],
     "autostrad": ["highway",45],
-    "mecca": ["city_street",5],
+    "mecca": ["city_street",25],
     "gardens": ["city_street",30],
     "abu-nusair": ["city_street",30],
     "almadena": ["city_street",47],
     "alsaada": ["city_street",15]
 }
-
-# while True:
-#     street = input("Enter the street name ")
-#     if street not in streets.keys():
-#         print("this street does not exist in out database, please enter one of these")
-        
-#         print('\n'+" ,".join(streets.keys())+'\n')
-#     else:
-#         break
 
 
 sent = 1
@@ -192,7 +183,7 @@ def main(_argv):
                 if sent <=1 :
                     sent += 1
                     account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "bca444acdccf916a6233ce8d12bb8478"
+                    auth_token = "65753b6a103491b311cd43bf03a92461"
                     client = Client(account_sid, auth_token)
                     call = client.calls.create(
                         twiml=f'<Response><Say>There is a possibility of an accident at {FLAGS.street} street, please check the surveillance Cameras</Say></Response>',
@@ -203,25 +194,19 @@ def main(_argv):
                     
         else:
             if a["car"] >= int(streets[FLAGS.street][1]):
-                if sent <=1 :
-                    sent += 1
-                    account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "bca444acdccf916a6233ce8d12bb8478"
-                    client = Client(account_sid, auth_token)
-                    call = client.calls.create(
-                        twiml=f'<Response><Say>you have {a["car"]} cars in {FLAGS.street} street</Say></Response>',
-                        to= "+962780146788",
-                        from_= "+15055602894"
-                    )
-                    print(call.sid)
-                # server =smtplib.SMTP('smtp.gmail.com:587')# yahoo casse cahnge what inside 
-                # server.ehlo()
-                # server.starttls()
-                # server.login('mohamma97dnada@gmail.com','IlovecivilEng_97')
-                # message='Subject:{}    {} in University street'.format('Number of cars is',a['car'])
-                # server.sendmail('mohamma97dnada@gmail.com','qeshtaqusai0@gmail.com',message)
-                # server.quit()
-                # print('send successfully ----------------------------------------')
+                if FLAGS.video == "0" or FLAGS.video == "1":
+                    if sent <=1 :
+                        sent += 1
+                        account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
+                        auth_token = "65753b6a103491b311cd43bf03a92461"
+                        client = Client(account_sid, auth_token)
+                        call = client.calls.create(
+                            twiml=f'<Response><Say>you have {a["car"]} cars in {FLAGS.street} street</Say></Response>',
+                            to= "+962780146788",
+                            from_= "+15055602894"
+                        )
+                        print(call.sid)
+
         print("FPS: %.2f" % fps)
         result = np.asarray(image)
         cv2.namedWindow("result", cv2.WINDOW_AUTOSIZE)
@@ -240,43 +225,3 @@ if __name__ == '__main__':
         app.run(main)
     except SystemExit:
         pass
-
-
-# root = tk.Tk()
-# apps = []
-# if os.path.isfile('save.txt'):
-#     with open('save.txt', 'r') as f:
-#         tempApps = f.read()
-#         tempApps = tempApps.split(',')
-#         apps = [x for x in tempApps if x.strip()]
-#         print(apps)
-# def addApp():
-#     for widget in frame.winfo_children():
-#         widget.destroy()
-#     filename = filedialog.askopenfilename(
-#         initialdir="/", title="Select file", filetypes=(("video", "*.mp4"), ("all files", "*.*")))
-#     apps.append(filename)
-#     print(apps)
-#     for app in apps:
-#         label = tk.Label(frame, text=app, bg="gray")
-#         label.pack()
-# def runApps():
-#     for app in apps:
-#         os.startfile(app)
-# canvas = tk.Canvas(root, height=700, width=700, bg="#263D42")
-# canvas.pack()
-# frame = tk.Frame(root, bg="white")
-# frame.place(relx=0.1, rely=0.1, relwidth=0.8, relheight=0.8)
-# openFile = tk.Button(root, text="Open File", padx=25,
-#                      pady=10, fg='white', bg="#263D42", command=addApp)
-# openFile.pack()
-# runApps = tk.Button(root, text="Run Apps", padx=25,
-#                     pady=10, fg='white', bg="#263D42", command=runApps)
-# runApps.pack()
-# for app in apps:
-#     label = tk.Label(frame, text=app)
-#     label.pack()
-# root.mainloop()
-# with open('save.txt', 'w') as f:
-#     for app in apps:
-#         f.write(app + ',')
