@@ -186,6 +186,7 @@ h. External Camera Detection & Save: it does the same thing as the External Came
 
 ``` pip install (name of the library) ```
 
+
 * if you forgot to select a street, the default street will be selected
 
 * if you want to have the same experience with the phone calls, you need to register on [this](https://twilio.com/) website, get the account sid, auth token and the phone number, then replace them inside detect_video.py with your own, don't forget to validate you phone number and replace the one that is there right now.
@@ -193,3 +194,6 @@ h. External Camera Detection & Save: it does the same thing as the External Came
 * if you connected a camera to your laptop, and the external cameras detection didn't work, change the default webcam in your laptop to the connected one, and press on the webcam detection. this model doesn't support all types of cameras.
 
 * this project is only available for windows devices only.
+
+* if you want to have the same experience with the phone calls, you need to register on [this](https://twilio.com/) website, get the account sid, auth token and the phone number, then replace them inside detect_video.py with your own, don't forget to validate you phone number and replace the one that is there right now.
+
