@@ -64,6 +64,8 @@ def image_detect():
 
 def webcam_detect():
     os.system('cmd /c "python detect_video.py --street {} --video 0"'.format(selection))
+def external_detect():
+    os.system('cmd /c "python detect_video.py --street {} --video 1"'.format(selection))
 
 def image_detect_and_save():
     filename = filedialog.askopenfilename(
@@ -88,6 +90,11 @@ def webcam_detect_and_save():
         initialdir="/", title="Select where to save")
     if save_spot:
         os.system('cmd /c "python detect_video.py --street {} --video 0 --output {}/saved.avi"'.format(selection,save_spot))
+def external_detect_and_save():
+    save_spot = filedialog.askdirectory(
+        initialdir="/", title="Select where to save")
+    if save_spot:
+        os.system('cmd /c "python detect_video.py --street {} --video 1 --output {}/saved.avi"'.format(selection,save_spot))
 
 # for hover effects
 
@@ -163,13 +170,13 @@ detect_webcam_and_save.place(x=320,y=300)
 
 # for External Cameras
 detect_external = tk.Button(root, text="External Camera Detection", width=25, padx = 10,font=Font_tuple2,
-                     pady=10, fg='white', bg="#263D42", command=webcam_detect)
+                     pady=10, fg='white', bg="#263D42", command=external_detect)
 detect_external.place(x=50,y=375)
 
 
 # for External Cameras and save
 detect_external_and_save = tk.Button(root, text="External Camera Detection & Save", width=25, padx = 10,font=Font_tuple2,
-                     pady=10, fg='white', bg="#263D42", command=webcam_detect)
+                     pady=10, fg='white', bg="#263D42", command=external_detect_and_save)
 detect_external_and_save.place(x=320,y=375)
 
 

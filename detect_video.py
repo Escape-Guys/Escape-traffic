@@ -183,7 +183,7 @@ def main(_argv):
                 if sent <=1 :
                     sent += 1
                     account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                    auth_token = "bca444acdccf916a6233ce8d12bb8478"
+                    auth_token = "65753b6a103491b311cd43bf03a92461"
                     client = Client(account_sid, auth_token)
                     call = client.calls.create(
                         twiml=f'<Response><Say>There is a possibility of an accident at {FLAGS.street} street, please check the surveillance Cameras</Say></Response>',
@@ -198,7 +198,7 @@ def main(_argv):
                     if sent <=1 :
                         sent += 1
                         account_sid = "AC3a31353dfb4a548f93229bbd07fe34d1"
-                        auth_token = "bca444acdccf916a6233ce8d12bb8478"
+                        auth_token = "65753b6a103491b311cd43bf03a92461"
                         client = Client(account_sid, auth_token)
                         call = client.calls.create(
                             twiml=f'<Response><Say>you have {a["car"]} cars in {FLAGS.street} street</Say></Response>',
